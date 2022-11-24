@@ -1,21 +1,27 @@
-export const lightTheme = {
+import { DefaultTheme } from "styled-components/native";
+
+export const lightTheme: DefaultTheme = {
   name: "light",
   primary: "#FFD000",
   background: "#FEFEFE",
-  titles: "#0C0C0C",
-  text: "#1B1B1B",
+  borderColor: "#1A1A1A",
+  titleColor: "#121212",
+  labelColor: "#1A1A1A",
+  placeholder: "#979797",
   accent: "#FFE572",
-  listItem: "#E8E8E8",
-  paid: "#00D265",
+  listItemBackgroundColor: "#E8E8E8",
+  green: "#00D265",
 };
 
-export const darkTheme = {
+export const darkTheme: DefaultTheme = {
   name: "dark",
   primary: "#FFD000",
-  background: "#FFFFFF",
-  titles: "#0C0C0C",
-  text: "#1B1B1B",
+  background: "#121212",
+  borderColor: "#E8E8E8",
+  titleColor: "#FEFEFE",
+  labelColor: "#FEFEFE",
+  placeholder: "#979797",
   accent: "#FFE572",
-  listItem: "#E8E8E8",
-  paid: "#00D265",
+  listItemBackgroundColor: "#1A1A1A",
+  green: "#00D265",
 };
