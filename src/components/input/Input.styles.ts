@@ -9,6 +9,7 @@ export const Input = styled.TextInput`
   border-width: 1px;
   border-color: ${(props) => props.theme.borderColor};
   color: ${(props) => props.theme.labelColor};
+  font-family: montserrat-regular;
 `;
 
 export const Label = styled.Text`
@@ -16,4 +17,5 @@ export const Label = styled.Text`
   line-height: 19.5px;
   margin-bottom: 4px;
   color: ${(props) => props.theme.labelColor};
+  font-family: montserrat-medium;
 `;

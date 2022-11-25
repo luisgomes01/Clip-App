@@ -10,8 +10,14 @@ const InputComponent = ({ label, containerStyle, ...otherProps }: Props) => {
   const theme = useTheme();
   return (
     <View style={containerStyle}>
-      {label && <Label>{label}</Label>}
-      <Input placeholderTextColor={theme.placeholder} {...otherProps} />
+      {label && (
+        <Label style={{ fontFamily: "montserrat-semibold" }}>{label}</Label>
+      )}
+      <Input
+        placeholderTextColor={theme.placeholder}
+        {...otherProps}
+        style={{ fontFamily: "montserrat-semibold" }}
+      />
     </View>
   );
 };
