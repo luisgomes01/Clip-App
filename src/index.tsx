@@ -4,6 +4,7 @@ import { useTheme } from "styled-components";
 import Button from "./components/button/Button";
 import Checkbox from "./components/checkbox/Checkbox";
 import Input from "./components/input/Input";
+import PickerSelect from "./components/picker/Picker";
 import Title from "./components/title/Title";
 
 export const Application = () => {
@@ -33,6 +34,18 @@ export const Application = () => {
         />
         <Button type="primary">Salvar</Button>
         <Button type="secondary">Voltar</Button>
+        <PickerSelect
+          items={[
+            {
+              label: "Java",
+              value: "java",
+            },
+            {
+              label: "Javascript",
+              value: "javascript",
+            },
+          ]}
+        />
       </View>
     </View>
   );

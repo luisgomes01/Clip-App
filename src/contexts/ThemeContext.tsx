@@ -17,7 +17,7 @@ export interface Theme {
 }
 
 export const ThemeContext: FC<Props> = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
