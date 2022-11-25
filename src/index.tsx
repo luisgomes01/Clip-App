@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
 import Button from "./components/button/Button";
+import Checkbox from "./components/checkbox/Checkbox";
 import Input from "./components/input/Input";
 import Title from "./components/title/Title";
 
@@ -25,6 +26,11 @@ export const Application = () => {
       >
         <Title>Criar Grupo</Title>
         <Input label="Descrição" placeholder="Descrição do Grupo" />
+        <Checkbox
+          checked={false}
+          label="Pago"
+          containerStyle={{ marginTop: 15 }}
+        />
         <Button type="primary">Salvar</Button>
         <Button type="secondary">Voltar</Button>
       </View>
