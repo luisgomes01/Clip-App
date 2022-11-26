@@ -27,3 +27,13 @@ export const PickerItem = styled(Picker.Item)`
   font-family: montserrat-regular;
   color: ${(props) => props.theme.labelColor};
 `;
+
+export const Label = styled.Text`
+  font-size: 16px;
+  line-height: 19.5px;
+  margin-bottom: 4px;
+  color: ${(props) => props.theme.labelColor};
+  font-family: montserrat-medium;
+`;
+
+export const Container = styled.View``;
