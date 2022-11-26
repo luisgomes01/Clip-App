@@ -10,7 +10,7 @@ export const RoundButton = styled.TouchableOpacity<Props>`
   align-items: center;
   width: 56px;
   height: 56px;
-  border-radius: 1000;
+  border-radius: 28px;
 `;
 
 export const PlusIcon = styled.Text`
