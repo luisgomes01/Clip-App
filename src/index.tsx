@@ -1,8 +1,10 @@
 import { StatusBar } from "expo-status-bar";
+import { useState } from "react";
 import { View } from "react-native";
 import { useTheme } from "styled-components";
 import Button from "./components/button/Button";
 import Checkbox from "./components/checkbox/Checkbox";
+import DatePicker from "./components/datepicker/DatePicker";
 import Input from "./components/input/Input";
 import PickerSelect from "./components/picker/Picker";
 import RoundedButton from "./components/roundedButton/RoundedButton";
@@ -10,6 +12,7 @@ import Title from "./components/title/Title";
 
 export const Application = () => {
   const theme = useTheme();
+  const [date, setDate] = useState(new Date());
 
   return (
     <View
@@ -48,6 +51,15 @@ export const Application = () => {
           ]}
         />
         <RoundedButton type="primary" />
+        <DatePicker
+          label="Data da conta"
+          value={date}
+          onChange={() => console.log("Changing datepicker value")}
+          type="set"
+          nativeEvent={{
+            timestamp: 0,
+          }}
+        />
       </View>
     </View>
   );
