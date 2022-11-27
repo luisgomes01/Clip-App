@@ -1,44 +1,38 @@
-import { View } from "react-native";
 import { useTheme } from "styled-components";
-import Button from "../../components/button/Button";
-import Checkbox from "../../components/checkbox/Checkbox";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Input from "../../components/input/Input";
-import PickerSelect from "../../components/picker/Picker";
-import Title from "../../components/title/Title";
+import { SearchContainer, Icon } from "./styles";
+import Container from "../../components/container/Container";
+import RoundedButton from "../../components/roundedButton/RoundedButton";
 
-const Search = () => {
+type RootStackParamList = {
+  CreateGroup: {};
+};
+
+type Props = NativeStackScreenProps<RootStackParamList>;
+
+const Search = ({ navigation }: Props) => {
   const theme = useTheme();
+
+  const handleAddButton = () => {
+    navigation.navigate("CreateGroup");
+  };
   return (
-    <View
-      style={{
-        flex: 1,
-        paddingLeft: 16,
-        paddingRight: 16,
-        backgroundColor: theme.background,
-      }}
-    >
-      <Title>Criar Grupo</Title>
-      <Input label="Descrição" placeholder="Descrição do Grupo" />
-      <Checkbox
-        checked={false}
-        label="Pago"
-        containerStyle={{ marginTop: 15 }}
+    <Container>
+      <SearchContainer>
+        <Input placeholder="Pesquisar" />
+        <Icon color={theme.labelColor} />
+      </SearchContainer>
+      <RoundedButton
+        type="primary"
+        style={{
+          position: "absolute",
+          right: 16,
+          bottom: 32,
+        }}
+        onPress={handleAddButton}
       />
-      <Button type="primary">Salvar</Button>
-      <Button type="secondary">Voltar</Button>
-      <PickerSelect
-        items={[
-          {
-            label: "Java",
-            value: "java",
-          },
-          {
-            label: "Javascript",
-            value: "javascript",
-          },
-        ]}
-      />
-    </View>
+    </Container>
   );
 };
 
