@@ -21,6 +21,7 @@ const Router = () => {
           fontFamily: "montserrat-bold",
           fontSize: 32,
         },
+        headerTintColor: theme.background,
       }}
     >
       <Stack.Screen name="Search" component={Search} />
