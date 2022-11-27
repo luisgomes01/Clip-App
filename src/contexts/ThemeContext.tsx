@@ -1,7 +1,8 @@
 import { StatusBarStyle } from "expo-status-bar";
-import { FC, ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme } from "../styles/theme";
+import { useClip } from "./ClipContext";
 
 interface Props {
   children: ReactNode;
@@ -16,8 +17,8 @@ export interface Theme {
   accent: string;
 }
 
-export const ThemeContext: FC<Props> = ({ children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(true);
+export const ThemeContext = ({ children }: Props) => {
+  const { isDarkTheme } = useClip();
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
