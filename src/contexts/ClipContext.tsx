@@ -23,8 +23,10 @@ interface Clip {
   toggleDarkTheme: () => void;
   groups: Group[];
   addGroup: (group: Group) => void;
+  removeGroup: (groupId: any) => void;
   bills: Bill[];
   addBill: (bill: Bill) => void;
+  removeBill: (billId: any) => void;
 }
 
 const ClipContext = createContext({} as Clip);
@@ -41,10 +43,25 @@ export const ClipContextProvider = ({ children }: Props) => {
     }));
   };
 
+  const removeGroup = (groupId: any) => {
+    setClipGlobalState((prev) => ({
+      ...prev,
+      groups: prev.groups.filter((group) => group.id !== groupId),
+      bills: prev.bills.filter((bill) => bill.groupId !== groupId),
+    }));
+  };
+
   const addBill = (bill: Bill) => {
     setClipGlobalState((prev) => ({
       ...prev,
       bills: [...prev.bills, bill],
+    }));
+  };
+
+  const removeBill = (billId: any) => {
+    setClipGlobalState((prev) => ({
+      ...prev,
+      bills: prev.bills.filter(({ id }) => id !== billId),
     }));
   };
 
@@ -53,8 +70,10 @@ export const ClipContextProvider = ({ children }: Props) => {
     toggleDarkTheme,
     groups: [],
     addGroup,
+    removeGroup,
     bills: [],
     addBill,
+    removeBill,
   } as Clip);
 
   return (
