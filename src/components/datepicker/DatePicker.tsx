@@ -1,12 +1,10 @@
-import DateTimePicker, {
-  DateTimePickerEvent,
-} from "@react-native-community/datetimepicker";
+import DateTimePicker from "@react-native-community/datetimepicker";
 import React, { useState } from "react";
 import { StyleProp, View, ViewStyle } from "react-native";
 import { Label } from "../input/Input.styles";
 import { Button, Text } from "./DatePicker.styles";
 
-interface Props extends DateTimePickerEvent {
+interface Props {
   value: Date;
   onChange: (value: Date) => void;
   label?: string;
