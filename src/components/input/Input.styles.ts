@@ -7,7 +7,7 @@ export const Input = styled.TextInput`
   line-height: 19.5px;
   border-radius: 8px;
   border-width: 1px;
-  border-color: ${(props) => props.theme.borderColor};
+  border-color: ${(props) => props.theme.placeholder};
   color: ${(props) => props.theme.labelColor};
   font-family: montserrat-regular;
 `;
