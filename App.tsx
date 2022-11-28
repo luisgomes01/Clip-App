@@ -4,6 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { ThemeContext } from "./src/contexts/ThemeContext";
 import Application from "./src/index";
+import { ClipContextProvider } from "./src/contexts/ClipContext";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -27,9 +28,11 @@ const App = () => {
 
   return (
     <SafeAreaView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      <ThemeContext>
-        <Application />
-      </ThemeContext>
+      <ClipContextProvider>
+        <ThemeContext>
+          <Application />
+        </ThemeContext>
+      </ClipContextProvider>
     </SafeAreaView>
   );
 };
