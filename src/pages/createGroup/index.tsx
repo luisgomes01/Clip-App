@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ToastAndroid } from "react-native";
+import { ToastAndroid, Alert, Platform } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Button from "../../components/button/Button";
 import Input from "../../components/input/Input";
@@ -21,12 +21,16 @@ const CreateGroup = ({ navigation }: Props) => {
   const { addGroup, groups } = useClip();
   const handleAddNewGroup = () => {
     if (!description || !type) {
-      ToastAndroid.showWithGravity(
-        "Por favor, preencha todos os campos!",
-        ToastAndroid.SHORT,
-        ToastAndroid.CENTER
-      );
+      if (Platform.OS === "android") {
+        ToastAndroid.showWithGravity(
+          "Por favor, preencha todos os campos!",
+          ToastAndroid.SHORT,
+          ToastAndroid.CENTER
+        );
+        return false;
+      }
 
+      Alert.alert("Por favor, preencha todos os campos!");
       return false;
     }
 
