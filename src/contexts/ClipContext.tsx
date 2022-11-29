@@ -27,6 +27,7 @@ interface Clip {
   bills: Bill[];
   addBill: (bill: Bill) => void;
   removeBill: (billId: any) => void;
+  updateBill: (bill: Bill) => void;
 }
 
 const ClipContext = createContext({} as Clip);
@@ -65,6 +66,18 @@ export const ClipContextProvider = ({ children }: Props) => {
     }));
   };
 
+  const updateBill = (bill: Bill) => {
+    setClipGlobalState((prev) => ({
+      ...prev,
+      bills: prev.bills.map((auxBill) => {
+        if (auxBill.id === bill.id) {
+          return bill;
+        }
+        return auxBill;
+      }),
+    }));
+  };
+
   const [clipGlobalState, setClipGlobalState] = useState({
     isDarkTheme: false,
     toggleDarkTheme,
@@ -74,6 +87,7 @@ export const ClipContextProvider = ({ children }: Props) => {
     bills: [],
     addBill,
     removeBill,
+    updateBill,
   } as Clip);
 
   return (

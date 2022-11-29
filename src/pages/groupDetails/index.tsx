@@ -19,7 +19,7 @@ type Props = {
 };
 
 const GroupDetails = ({ route, navigation }: Props) => {
-  const { groups, bills } = useClip();
+  const { groups, bills, updateBill } = useClip();
   const [search, setSearch] = useState("");
   const title = groups.find(({ id }) => id === route.params.id).description;
   const filteredBills = bills.filter(
@@ -49,7 +49,14 @@ const GroupDetails = ({ route, navigation }: Props) => {
       <FlatList
         data={searchedBills}
         renderItem={({ item }) => (
-          <BillContainer>
+          <BillContainer
+            onPress={() =>
+              updateBill({
+                ...item,
+                paid: !item.paid,
+              })
+            }
+          >
             <View>
               <BillTitle>{item.description}</BillTitle>
               <BillDate>{item.date.toLocaleDateString()}</BillDate>
