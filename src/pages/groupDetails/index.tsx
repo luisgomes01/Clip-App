@@ -61,7 +61,15 @@ const GroupDetails = ({ route, navigation }: Props) => {
               <BillTitle>{item.description}</BillTitle>
               <BillDate>{item.date.toLocaleDateString()}</BillDate>
             </View>
-            <Checkbox checked={item.paid} />
+            <Checkbox
+              onChange={() =>
+                updateBill({
+                  ...item,
+                  paid: !item.paid,
+                })
+              }
+              checked={item.paid}
+            />
           </BillContainer>
         )}
         keyExtractor={({ id }) => String(id)}
