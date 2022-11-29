@@ -8,12 +8,9 @@ import Title from "../../components/title/Title";
 import { useClip } from "../../contexts/ClipContext";
 
 import { Container } from "./styles";
+import { RootNavigatorProps } from "../../router";
 
-type RootStackParamList = {
-  Search: {};
-};
-
-type Props = NativeStackScreenProps<RootStackParamList>;
+type Props = NativeStackScreenProps<RootNavigatorProps>;
 
 const CreateGroup = ({ navigation }: Props) => {
   const [description, setDescription] = useState("");

@@ -14,7 +14,7 @@ export const Icon = styled(SearchIcon)`
   color: ${(props) => props.theme.placeholder};
 `;
 
-export const GroupView = styled.View`
+export const GroupView = styled.TouchableOpacity`
   background-color: ${(props) => props.theme.listItemBackgroundColor};
   padding-vertical: 12px;
   padding-horizontal: 16px;
