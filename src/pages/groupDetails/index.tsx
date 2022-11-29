@@ -1,5 +1,6 @@
 import { RouteProp } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { useState } from "react";
 import { FlatList, View } from "react-native";
 import { useTheme } from "styled-components";
 import Checkbox from "../../components/checkbox/Checkbox";
@@ -19,22 +20,34 @@ type Props = {
 
 const GroupDetails = ({ route, navigation }: Props) => {
   const { groups, bills } = useClip();
+  const [search, setSearch] = useState("");
   const title = groups.find(({ id }) => id === route.params.id).description;
   const filteredBills = bills.filter(
     ({ groupId }) => groupId === route.params.id
   );
+  const searchedBills = search
+    ? filteredBills.filter(
+        ({ description, date }) =>
+          description.toLowerCase().includes(search.toLowerCase()) ||
+          date.toLocaleDateString().includes(search)
+      )
+    : filteredBills;
   const theme = useTheme();
   return (
     <Container>
       <Title>{title}</Title>
       {filteredBills.length > 0 && (
         <SearchContainer>
-          <InputComponent placeholder="Pesquisar" />
+          <InputComponent
+            placeholder="Pesquisar"
+            value={search}
+            onChangeText={setSearch}
+          />
           <Icon color={theme.placeholder} />
         </SearchContainer>
       )}
       <FlatList
-        data={filteredBills}
+        data={searchedBills}
         renderItem={({ item }) => (
           <BillContainer>
             <View>
