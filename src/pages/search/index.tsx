@@ -11,12 +11,9 @@ import WaterDropIcon from "../../components/icons/WaterDropIcon";
 import InternetIcon from "../../components/icons/InternetIcon";
 import PhoneIcon from "../../components/icons/PhoneIcon";
 import BarCodeIcon from "../../components/icons/BarCodeIcon";
+import { RootNavigatorProps } from "../../router";
 
-type RootStackParamList = {
-  CreateGroup: {};
-};
-
-type Props = NativeStackScreenProps<RootStackParamList>;
+type Props = NativeStackScreenProps<RootNavigatorProps>;
 
 const Search = ({ navigation }: Props) => {
   const theme = useTheme();
@@ -64,7 +61,9 @@ const Search = ({ navigation }: Props) => {
       <FlatList
         data={groups}
         renderItem={({ item }) => (
-          <GroupView>
+          <GroupView
+            onPress={() => navigation.navigate("GroupDetails", { id: item.id })}
+          >
             <GroupText>{item.description}</GroupText>
             {ICONS_MAPPING[item.type]}
           </GroupView>

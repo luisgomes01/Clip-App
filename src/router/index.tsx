@@ -7,7 +7,14 @@ import CreateGroup from "../pages/createGroup";
 import GroupDetails from "../pages/groupDetails";
 import Search from "../pages/search";
 
-const Stack = createNativeStackNavigator();
+export type RootNavigatorProps = {
+  Search: {};
+  CreateGroup: {};
+  GroupDetails: { id: any };
+  CreateBill: { groupId: any };
+};
+
+const Stack = createNativeStackNavigator<RootNavigatorProps>();
 
 const Router = () => {
   const theme = useTheme();
