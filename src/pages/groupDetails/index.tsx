@@ -57,6 +57,7 @@ const GroupDetails = ({ route, navigation }: Props) => {
             <Checkbox checked={item.paid} />
           </BillContainer>
         )}
+        keyExtractor={({ id }) => String(id)}
       />
       <RoundedButton
         type="primary"

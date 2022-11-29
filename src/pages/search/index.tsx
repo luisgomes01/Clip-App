@@ -1,6 +1,7 @@
 import { useTheme } from "styled-components";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { FlatList } from "react-native";
+import { useState } from "react";
 import Input from "../../components/input/Input";
 import { SearchContainer, Icon, GroupView, GroupText } from "./styles";
 import Container from "../../components/container/Container";
@@ -16,6 +17,7 @@ import { RootNavigatorProps } from "../../router";
 type Props = NativeStackScreenProps<RootNavigatorProps>;
 
 const Search = ({ navigation }: Props) => {
+  const [search, setSearch] = useState("");
   const theme = useTheme();
 
   const { groups } = useClip();
@@ -48,6 +50,12 @@ const Search = ({ navigation }: Props) => {
     ),
   };
 
+  const filteredGroups = search
+    ? groups.filter(({ description }) =>
+        description.toLowerCase().includes(search.toLowerCase())
+      )
+    : groups;
+
   const handleAddButton = () => {
     navigation.navigate("CreateGroup");
   };
@@ -55,11 +63,15 @@ const Search = ({ navigation }: Props) => {
   return (
     <Container>
       <SearchContainer>
-        <Input placeholder="Pesquisar" />
+        <Input
+          placeholder="Pesquisar"
+          value={search}
+          onChangeText={setSearch}
+        />
         <Icon color={theme.placeholder} />
       </SearchContainer>
       <FlatList
-        data={groups}
+        data={filteredGroups}
         renderItem={({ item }) => (
           <GroupView
             onPress={() => navigation.navigate("GroupDetails", { id: item.id })}
@@ -68,6 +80,7 @@ const Search = ({ navigation }: Props) => {
             {ICONS_MAPPING[item.type]}
           </GroupView>
         )}
+        keyExtractor={({ id }) => String(id)}
       />
       <RoundedButton
         type="primary"
